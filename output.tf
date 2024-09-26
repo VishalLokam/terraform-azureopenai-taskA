@@ -17,7 +17,7 @@ output "azureopenai_account_name" {
   value = azurerm_cognitive_account.azureopenai_cognitive_account.name
 }
 
-output "endpoint" {
+output "endpoint_url" {
   value = azurerm_cognitive_account.azureopenai_cognitive_account.endpoint
 }
 
