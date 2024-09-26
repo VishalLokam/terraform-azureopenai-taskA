@@ -1,9 +1,9 @@
 import os
 from openai import AzureOpenAI
 
-endpoint = os.getenv("ENDPOINT_URL", "https://vishaltestazureopenaiprivate2.openai.azure.com/")
-deployment = os.getenv("DEPLOYMENT_NAME", "azureopenai_cognitive_deployment")
-subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "1b18ef5685bd431b864e648141041ba4")
+endpoint = os.getenv("ENDPOINT_URL", "https://vishaltestazureopenaiprivate.openai.azure.com/")
+deployment = os.getenv("DEPLOYMENT_NAME", "gpt35turbo_0125_deployment")
+subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "b50c4f828e814f629aa1181830a43ed0")
 
 print(endpoint + "  " + deployment + " " + subscription_key )
 
@@ -28,4 +28,4 @@ completion = client.chat.completions.create(
 ],
 )
 
-print(completion.choices[0].message)
+print(completion.choices[0].message.content)

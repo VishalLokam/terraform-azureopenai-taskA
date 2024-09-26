@@ -11,11 +11,11 @@ resource "azurerm_cognitive_account" "azureopenai_cognitive_account" {
   sku_name                           = "S0"
   public_network_access_enabled      = false
   outbound_network_access_restricted = true
-  custom_subdomain_name              = "vishaltestazureopenaiprivate2"
+  custom_subdomain_name              = "vishaltestazureopenaiprivate"
 }
 
 resource "azurerm_cognitive_deployment" "azureopenai_cognitive_deployment" {
-  name                 = "azureopenai_cognitive_deployment"
+  name                 = "gpt35turbo_0125_deployment"
   cognitive_account_id = azurerm_cognitive_account.azureopenai_cognitive_account.id
   model {
     format  = "OpenAI"
@@ -23,7 +23,8 @@ resource "azurerm_cognitive_deployment" "azureopenai_cognitive_deployment" {
     version = "0125"
   }
   sku {
-    name = "Standard"
+    name     = "Standard"
+    capacity = 50
   }
 
 }
@@ -39,7 +40,7 @@ resource "azurerm_subnet" "azureopenai_subnet" {
   name                 = "azureopenai_subnet"
   resource_group_name  = azurerm_resource_group.azureopenai_rg.name
   virtual_network_name = azurerm_virtual_network.azureopenai_vn.name
-  address_prefixes     = ["10.0.0.0/24"]
+  address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_private_dns_zone" "azureopenai_dns_zone" {
